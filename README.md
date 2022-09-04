@@ -1,3 +1,30 @@
+Test SUNSHIFT 
+This repository contains solutions to problems that are part of a test made by the company Sunshift DEV.
+
+Run this app
+This app was build with React JS and Boostrap.
+
+To run this project you can clone this repo with the following command:
+
+git clone https://github.com/lauranavoni/TestReact.git
+
+Once you've done it, remember install all the depencencies needed
+
+cd my-app
+
+npm install:
+
+*npm i axios
+
+*npm i react-icons
+
+*npm i reactstrap
+
+*npm i react-bootstrap
+
+And finally, run the app with the following command:
+
+npm start
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
