@@ -1,46 +1,55 @@
-import { useState } from "react";
-import { Image, Modal } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { FaLink } from "react-icons/fa";
+import React from "react";
 
-function UserModal({ user }) {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+export function UserModal({ location }) {
   return (
-    <>
-      <FaLink size="5%" className="mr-4" />
-      <Button onClick={handleShow}>Link</Button>
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div
+          class="modal-content"
+          style={{ backgroundColor: "rgb(69, 77, 85)" }}
+        >
+          <div class="modal-header">
+            <h5 class="modal-title " id="exampleModalLongTitle">
+              Location
+            </h5>
 
-      <Modal show={show} onHide={handleClose} >
-        <Modal.Header closeButton>
-          <Modal.Title>
-            <h1> Users Address</h1>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body >
-          <Image src={user?.picture.large} class="img-thumbnail mx-auto"  />
-        </Modal.Body>
-        <Modal.Body> First Name: {`${user?.name.first}`}</Modal.Body>
-        <Modal.Body> Last Name: {` ${user?.name.last}`}</Modal.Body>
-        <Modal.Body>Country: {user?.location.country}</Modal.Body>
-        <Modal.Body>City: {user?.location.city}</Modal.Body>
-        <Modal.Body>State: {user?.location.state}</Modal.Body>
-        <Modal.Body>
-          Street: {user?.location.street.number} Name:{" "}
-          {user?.location.street.name}
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button class="" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true" style={{ color: "white" }}>
+                &times;
+              </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              {location?.country}, {location?.city}, {location?.street?.name}{" "}
+              Street, {location?.street?.number}
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default UserModal;
+

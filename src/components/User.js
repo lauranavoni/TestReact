@@ -1,29 +1,64 @@
-import React from "react";
-import { Card, Col } from "react-bootstrap";
-import UserModal from "./UserModal";
+import React, { useEffect, useState } from "react";
+import { getUsers } from "../service/users";
+import Spinner from "./Spinner";
+import UserTable from "./UserTable";
+import { UserModal } from "./UserModal";
+import InfiniteScroll from "react-infinite-scroll-component";
 
-const User = ({ user }) => {
-  const { name } = user;
 
+export default function UsersTable() {
+  let [users, setUsers] = useState([]);
+  let [loading, setLoading] = useState(true);
+  let [location, setLocation] = useState({});
+
+  useEffect(() => {
+    getMoreUsers();
+  }, [getMoreUsers]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function getMoreUsers() {
+    setLocation(true);
+    getUsers()
+      .then((apiData) => {
+        let usersList = users.concat(apiData?.results);
+        setUsers(usersList);
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => setLoading(false));
+  }
   return (
-    <>
-      <Col class="col-md-6">
-        <Card class="card-img-top">
-          <Card.Body>
-            <Card.Title>First Name: {`${name.first}`}</Card.Title>
-            <Card.Title>Last Name: {`${name.last}`}</Card.Title>
-            <Card.Text>
-              Phone :{user?.phone} <br></br>
-              Email : {user?.email}
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <UserModal user={user}></UserModal>
-          </Card.Footer>
-        </Card>
-      </Col>
-    </>
-  );
-};
+ <InfiniteScroll
+      dataLength={users?.length}
+      next={() => getMoreUsers()}
+      hasMore
+    >
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>phone</th>
+            <th>Adress</th>
+          </tr>
+        </thead>
+        <tbody>
+          {loading && !users?.length ? (
+            <Spinner/>
+          ) : (
+            users?.map((user) => (
+              <UserTable user={user} setLocation={setLocation} />
+            ))
+          )}
 
-export default User;
+          <UserModal location={location} />
+        </tbody>
+      </table>
+</InfiniteScroll>
+  );
+}
+
+
