@@ -22,6 +22,8 @@ npm install:
 
 *npm i react-bootstrap
 
+*npm i react-infinite-scroll-component
+
 And finally, run the app with the following command:
 
 npm start
@@ -95,3 +97,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+look at the loom fot this proyect
+https://www.loom.com/share/2a8bd1eaa59349e38e83ac720f46e07c
