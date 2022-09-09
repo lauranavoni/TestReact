@@ -1,18 +1,19 @@
 import React from "react";
 import { FaLink } from "react-icons/fa";
+import { Image } from "react-bootstrap";
 
-export default function UserTable({ user, setLocation,setShowModal }) {
+export default function UserTable({ user, setLocation, setShowModal }) {
   const handleClick = () => {
-    setLocation(user?.location)
-    setShowModal (true)
-  }
+    setLocation(user?.location);
+    setShowModal(true);
+  };
 
   return (
-    <tr> 
-      <Td>
-        <img src={user?.picture?.large} className="img-thumbnail mx-auto"/>
-      </Td >
-      <Td>{user?.name?.first}</Td>
+    <tr>
+      <Td className="color-white">
+      <Image src={user?.picture.large} className="rounded-circle img-thumbnail mx-auto"  />
+      </Td>
+      <Td >{user?.name?.first}</Td>
       <Td>{user?.name?.last}</Td>
       <Td>{user?.email}</Td>
       <Td>{user?.phone}</Td>
@@ -21,8 +22,7 @@ export default function UserTable({ user, setLocation,setShowModal }) {
           data-toggle="tooltip"
           data-placement="right"
           title="Location"
-          style={{ cursor: "pointer"}}
-          data-target="#exampleModalCenter"
+          style={{ cursor: "pointer" }}
           onClick={handleClick}
         />
       </Td>
@@ -37,7 +37,7 @@ function Td({ children }) {
         verticalAlign: "middle",
         alignItems: "center",
         textAlign: "center",
-        color:"whitesmoke"
+        color: "whitesmoke",
       }}
     >
       {children}

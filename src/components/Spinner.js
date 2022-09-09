@@ -3,14 +3,22 @@ import React from "react";
 export default function Spinner() {
   return (
     <td>
-    <button class="btn btn-light" type="button" disabled>
-    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    <span class="visually-hidden">Loading...</span>
-  </button>
-  <button class="btn btn-light" type="button" disabled>
-    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    Loading...
-  </button>   
-  </td>
+      <button className="btn btn-primary" type="button" disabled>
+        <span
+          className="spinner-grow spinner-grow-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        <span className="visually-hidden">Loading...</span>
+      </button>
+      <button className="btn btn-primary" type="button" disabled>
+        <span
+          className="spinner-grow spinner-grow-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        Loading...
+      </button>
+    </td>
   );
 }

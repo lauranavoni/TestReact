@@ -12,22 +12,10 @@ export function UserModal({ location,setShowModal }) {
               Address Users
             </h5>
 
-            <button
-              type="button"
-              className="close"
-              data-dismiss="modal"
-              onClick={handleClose}
-            >
-              <span aria-hidden="true" style={{ color: "black" }}>
-                &times;
-              </span>
-            </button>
-            
           </div>
           <div className="modal-body">
             <p>
-              {location?.country}, {location?.city}, {location?.street?.name}{" "}
-              Street, {location?.street?.number}
+              {location?.country}, {location?.city}, {location?.street?.name}{" "},{location?.street?.number}
             </p>
           </div>
           <div className="modal-footer">
@@ -40,10 +28,13 @@ export function UserModal({ location,setShowModal }) {
               Close
             </button>
           </div>
-        </div>
+          </div>
+   
 
     
   );
 }
-
+   
+  
+    
 
