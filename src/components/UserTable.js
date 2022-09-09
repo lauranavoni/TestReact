@@ -1,25 +1,29 @@
 import React from "react";
-import { FaLocationArrow } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 
-export default function UserTable({ user, setLocation }) {
+export default function UserTable({ user, setLocation,setShowModal }) {
+  const handleClick = () => {
+    setLocation(user?.location)
+    setShowModal (true)
+  }
+
   return (
-    <tr>
+    <tr> 
       <Td>
-        <img src={user?.picture?.thumbnail} />
-      </Td>
+        <img src={user?.picture?.large} className="img-thumbnail mx-auto"/>
+      </Td >
       <Td>{user?.name?.first}</Td>
       <Td>{user?.name?.last}</Td>
       <Td>{user?.email}</Td>
       <Td>{user?.phone}</Td>
       <Td>
-        <FaLocationArrow
+        <FaLink
           data-toggle="tooltip"
           data-placement="right"
           title="Location"
-          style={{ cursor: "pointer" }}
-   
+          style={{ cursor: "pointer"}}
           data-target="#exampleModalCenter"
-          onClick={() => setLocation(user?.location)}
+          onClick={handleClick}
         />
       </Td>
     </tr>
@@ -33,6 +37,7 @@ function Td({ children }) {
         verticalAlign: "middle",
         alignItems: "center",
         textAlign: "center",
+        color:"whitesmoke"
       }}
     >
       {children}

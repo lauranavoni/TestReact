@@ -7,13 +7,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 
 export default function UsersTable() {
+
   let [users, setUsers] = useState([]);
   let [loading, setLoading] = useState(true);
   let [location, setLocation] = useState({});
+  let [showModal, setShowModal]=useState(false);
 
   useEffect(() => {
     getMoreUsers();
-  }, [getMoreUsers]);
+  }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function getMoreUsers() {
@@ -29,19 +31,22 @@ export default function UsersTable() {
       .finally(() => setLoading(false));
   }
   return (
- <InfiniteScroll
+    <>
+    {showModal && <UserModal location={location} setShowModal={setShowModal}/>}
+ 
+      <InfiniteScroll
       dataLength={users?.length}
       next={() => getMoreUsers()}
-      hasMore
+      hasMore={true}
     >
-      <table class="table table-striped table-dark">
+      <table className="table table-striped table-hover">
         <thead>
           <tr>
-            <th>Image</th>
+            <th>Picture</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
-            <th>phone</th>
+            <th>Phone</th>
             <th>Adress</th>
           </tr>
         </thead>
@@ -50,15 +55,16 @@ export default function UsersTable() {
             <Spinner/>
           ) : (
             users?.map((user) => (
-              <UserTable user={user} setLocation={setLocation} />
+              <UserTable user={user} setLocation={setLocation} setShowModal={setShowModal} />
             ))
           )}
 
-          <UserModal location={location} />
         </tbody>
       </table>
-</InfiniteScroll>
+      </InfiniteScroll>
+      </>
+
+
   );
 }
-
 

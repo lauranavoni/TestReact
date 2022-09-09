@@ -2,15 +2,15 @@ import React from "react";
 
 export default function Spinner() {
   return (
-    <td
-      colSpan={6}
-      align="center"
-      height="300"
-      style={{ verticalAlign: "middle" }}
-    >
-      <div class="spinner-border text-light" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </td>
+    <td>
+    <button class="btn btn-light" type="button" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    <span class="visually-hidden">Loading...</span>
+  </button>
+  <button class="btn btn-light" type="button" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>   
+  </td>
   );
 }
