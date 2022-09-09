@@ -22,6 +22,8 @@ npm install:
 
 *npm i react-bootstrap
 
+*npm i react-infinite-scroll-component
+
 And finally, run the app with the following command:
 
 npm start
